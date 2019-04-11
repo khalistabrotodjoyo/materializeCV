@@ -45,6 +45,24 @@
   <script src="js/nav.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
 
+    // Script to register the service worker goes here
+	if (!('serviceWorker' in navigator)) {
+		console.log('Service worker not supported');
+		//return; ketika dijalankan penggunaan return , SW tidak dapat bekerja
+		//ketika return di hapus, serice worker dapat melakukan  installing dan aktivasi
+		
+	} //jika browser tidak mendukung service worker maka akan muncul pesan service worker not supoorted di consol log
+	navigator.serviceWorker.register('khalista-sw.js')
+		.then(function() {
+		console.log('Registered');
+		})//jika registrasi service worker  berjalan maka tampilkan pesan di consol log
+		.catch(function(error) {
+		console.log('Registration failed:', error);
+		});//jika registrasi service worker tidak berjalan maka tampilkan pesan di consol log
+	//index.html berfungsi untuk registrasi service worker dan service worker tidak boleh di registrasi di dalam file JS.
+	
+    </script>
  </body>
 </html>
